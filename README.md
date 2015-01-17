@@ -12,6 +12,7 @@ drasko@Lenin:~/mbed/workspace_tools$ python build.py -m NUCLEO_F030R8 -t GCC_ARM
 
 ## ARM GCC
 ARM GCC for Cortex-M can be found here: https://launchpad.net/gcc-arm-embedded
+
 **N.B.** `crosstool-ng` toolchaiin for AMR Cortex-M0+ will not work - issues with size optimisation and some libraries.
 
 
