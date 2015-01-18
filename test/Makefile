@@ -60,11 +60,7 @@ MBED_OBJ += $(MBED_DIR)/$(TARGET_BOARD)/TOOLCHAIN_GCC_ARM/retarget.o
 MBED_OBJ += $(MBED_DIR)/$(TARGET_BOARD)/TOOLCHAIN_GCC_ARM/$(SYSTEM_NAME).o
 MBED_OBJ += $(MBED_DIR)/$(TARGET_BOARD)/TOOLCHAIN_GCC_ARM/board.o
 
-#MBED_OBJ += $(MBED_DIR)/$(TARGET_BOARD)/TOOLCHAIN_GCC_ARM/stm32f30x_usart.o
-#MBED_OBJ += $(MBED_DIR)/$(TARGET_BOARD)/TOOLCHAIN_GCC_ARM/stm32f30x_tim.o
-#MBED_OBJ += $(MBED_DIR)/$(TARGET_BOARD)/TOOLCHAIN_GCC_ARM/stm32f30x_rcc.o
-#MBED_OBJ += $(MBED_DIR)/$(TARGET_BOARD)/TOOLCHAIN_GCC_ARM/stm32f30x_gpio.o
-
+# Needed for linking
 MBED_OBJ += $(MBED_DIR)/$(TARGET_BOARD)/TOOLCHAIN_GCC_ARM/stm32f0xx_hal_usart.o
 MBED_OBJ += $(MBED_DIR)/$(TARGET_BOARD)/TOOLCHAIN_GCC_ARM/stm32f0xx_hal_tim.o
 MBED_OBJ += $(MBED_DIR)/$(TARGET_BOARD)/TOOLCHAIN_GCC_ARM/stm32f0xx_hal_rcc.o
@@ -73,9 +69,15 @@ MBED_OBJ += $(MBED_DIR)/$(TARGET_BOARD)/TOOLCHAIN_GCC_ARM/stm32f0xx_hal_uart.o
 MBED_OBJ += $(MBED_DIR)/$(TARGET_BOARD)/TOOLCHAIN_GCC_ARM/stm32f0xx_hal.o
 MBED_OBJ += $(MBED_DIR)/$(TARGET_BOARD)/TOOLCHAIN_GCC_ARM/stm32f0xx_hal_cortex.o
 
+# Needed for full functionality
+MBED_OBJ += $(MBED_DIR)/$(TARGET_BOARD)/TOOLCHAIN_GCC_ARM/stm32f0xx_hal_rcc_ex.o
+
 ifneq ("$(wildcard $(MBED_DIR)/$(TARGET_BOARD)/TOOLCHAIN_GCC_ARM/mbed_overrides.o)","")
 	MBED_OBJ += $(MBED_DIR)/$(TARGET_BOARD)/TOOLCHAIN_GCC_ARM/mbed_overrides.o
 endif
+
+# Uncomment this to include whole mbed lib
+#MBED_OBJ := $(foreach dir,$(MBED_DIR)/$(TARGET_BOARD)/TOOLCHAIN_GCC_ARM,$(wildcard $(dir)/*.o))
 
 # directories
 INC_DIRS = $(MBED_DIR) $(MBED_DIR)/$(TARGET_BOARD) $(MBED_DIR)/$(TARGET_BOARD)/TOOLCHAIN_GCC_ARM
