@@ -15,6 +15,13 @@ ARM GCC for Cortex-M can be found here: https://launchpad.net/gcc-arm-embedded
 
 **N.B.** `crosstool-ng` toolchaiin for AMR Cortex-M0+ will not work - issues with size optimisation and some libraries.
 
+## Normal flashing
+Copy the <myProgram>.bin to remote drive NUCLEO.
+
+Although there is already some files on this file system, copying <myProgram>.bin to the remote drive NUCLO root dir will cause:
+* Automatic flashing of the newly added binary
+* Reset of the board (and strat of the new program)
+
 ## OpenOCD
 ```bash
 drasko@Lenin:~/openocd/tcl$ pwd
